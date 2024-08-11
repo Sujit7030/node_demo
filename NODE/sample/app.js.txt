@@ -1,0 +1,84 @@
+function logout() {
+    alert('Logged out');
+}
+
+document.getElementById('mainForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var funcCode = document.getElementById('funcCode').value;
+
+    if (funcCode === 'A-Add') { 
+        document.getElementById('firstPage').style.display = 'none';
+        document.getElementById('secondPage').style.display = 'block';
+        document.getElementById('mainHeader').style.display = 'none';
+    } else {
+        alert('You selected: ' + funcCode);
+    }
+});
+
+function submitDocuments() {
+    var checkboxes = document.querySelectorAll('input[name="doc"]');
+    var submittedDocumentsContainer = document.getElementById('submittedDocuments');
+
+    submittedDocumentsContainer.innerHTML = ''; 
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i];
+        var correspondingLabel = checkbox.nextElementSibling;
+        if (checkbox.checked) {
+            var div = document.createElement('div');
+            div.textContent = correspondingLabel.textContent.trim();
+            submittedDocumentsContainer.appendChild(div);
+        }
+    }
+
+    if (submittedDocumentsContainer.children.length === 0) {
+        alert('Please select at least one document.');
+        return;
+    }
+
+    document.getElementById('secondPage').style.display = 'none';
+    document.getElementById('thirdPage').style.display = 'block';
+}
+
+function cancelDocuments() {
+    
+    document.getElementById('submittedDocuments').innerHTML = '';
+
+    
+    var checkboxes = document.querySelectorAll('input[name="doc"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+
+    document.getElementById('secondPage').style.display = 'none';
+    document.getElementById('firstPage').style.display = 'block';
+    document.getElementById('mainHeader').style.display = 'flex';
+}
+
+document.getElementById('customerInfoForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    document.getElementById('thirdPage').style.display = 'none';
+    document.getElementById('fourthPage').style.display = 'block';
+});
+
+function backToSecondPage() {
+    document.getElementById('thirdPage').style.display = 'none';
+    document.getElementById('secondPage').style.display = 'block';
+}
+
+function closeConfirmation() {
+    alert('Documents Successfully Added');
+    
+    document.getElementById('fourthPage').style.display = 'none';
+    document.getElementById('firstPage').style.display = 'block';
+    document.getElementById('mainHeader').style.display = 'flex';
+}
+
+function uploadSelectedFile() {
+    var fileInput = document.getElementById('fileInput');
+    if (fileInput.files.length > 0) {
+        alert('File selected: ' + fileInput.files[0].name);
+    }
+}

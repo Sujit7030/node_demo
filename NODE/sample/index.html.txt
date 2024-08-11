@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Function Form</title>
+    <link rel="stylesheet" href="DMS_FrontPage.css">
+</head>
+<body>
+    <div class="container" id="firstPage">
+        <header id="mainHeader">
+            <div class="header-right">
+                <span class="session-user">Session_user</span>
+                <button class="logout-button" onclick="logout()">Logout</button>
+            </div>
+        </header>
+        <h3>BDBL Document Management System</h3>
+        <form id="mainForm">
+            <div class="form-group">
+                <label for="Function">Function:</label>
+                <select id="funcCode" name="Function">
+                    <option value="A-Add">A-Add</option>
+                    <option value="Modify">Modify</option>
+                    <option value="Inquiry">Inquiry</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="CustomerId">CustomerId:</label>
+                <input type="text" id="customerId" name="CustomerId" required>
+            </div>
+            <div class="form-row">
+                <label for="Account No">AccountNo:</label>
+                <input type="text" id="accountNo" name="AccountNo" required>
+            </div>
+            <div class="button-group">
+                <button type="submit">Go</button>
+                <button type="reset">Clear</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-full" id="secondPage">
+        <h2>BDBL Document Management System</h2>
+        <div class="form-group-horizontal">
+            <div class="document-list">
+                <h1>Function Code: A-Add</h1>
+                <label>Document List:</label>
+                <div class="document-checkboxes">
+                    <input type="checkbox" id="doc1" name="doc" value="Document 1"><label for="doc1"> Document 1</label><br>
+                    <input type="checkbox" id="doc2" name="doc" value="Document 2"><label for="doc2"> Document 2</label><br>
+                    <input type="checkbox" id="doc3" name="doc" value="Document 3"><label for="doc3"> Document 3</label><br>
+                    <input type="checkbox" id="doc4" name="doc" value="Document 4"><label for="doc4"> Document 4</label><br>
+                    <input type="checkbox" id="doc5" name="doc" value="Document 5"><label for="doc5"> Document 5</label><br>
+                    <input type="checkbox" id="doc6" name="doc" value="Document 6"><label for="doc6"> Document 6</label><br>
+                </div>
+                <div class="button-group">
+                    <button type="button" onclick="submitDocuments()">Next</button>
+                    <button type="button" onclick="cancelDocuments()">Cancel</button>
+                </div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="submitted-documents">
+                <label>Submitted Document:</label>
+                <div id="submittedDocuments"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="thirdPage">
+        <h3>Customer Information Form</h3>
+        <div class="form-group">
+            <form id="customerInfoForm">
+                <div class="form-row">
+                    <label for="D52">D52<span class="required">*</span>:</label>
+                    <input type="file" id="D52" name="D52" required>
+                </div>
+                <div class="form-row">
+                    <label for="remark">Remark:</label>
+                    <input type="text" id="remark" name="remark">
+                </div>
+                <div class="button-group">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="backToSecondPage()">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="fourthPage">
+        <h3>BDBL Document Management System</h3>
+        <div class="form-group">
+            <label>Documents Successfully Added</label>
+            <button type="button" onclick="closeConfirmation()">Ok</button>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" style="display: none;" onchange="uploadSelectedFile()">
+
+    <script src="app.js"></script>
+</body>
+</html>
